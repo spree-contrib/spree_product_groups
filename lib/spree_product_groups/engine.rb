@@ -16,5 +16,10 @@ module SpreeProductGroups
     end
 
     config.to_prepare &method(:activate).to_proc
+
+    initializer "spree.product_groups.environment", :after => 'spree.environment' do |app|
+      Spree::Config.searcher_class = Spree::Core::Search::ProductGroupBase
+    end
+
   end
 end

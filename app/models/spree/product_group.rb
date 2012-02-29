@@ -38,6 +38,8 @@ module Spree
     has_many :product_scopes
     accepts_nested_attributes_for :product_scopes
 
+    has_many :promotion_rules
+
     make_permalink
 
     # Testing utility: creates new *ProductGroup* from search permalink url.

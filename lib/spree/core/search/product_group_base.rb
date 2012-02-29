@@ -1,7 +1,7 @@
 module Spree
   module Core
     module Search
-      class Base
+      class ProductGroupBase
         attr_accessor :properties
 
         def initialize(params)
