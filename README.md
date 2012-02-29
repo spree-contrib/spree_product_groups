@@ -1,7 +1,27 @@
 SpreeProductGroups
 ==================
 
-Introduction goes here.
+
+Installation
+============
+
+/app/assets/javascripts/admin/all.js
+add
+
+//= require admin/spree_core
+//= require admin/spree_auth
+//= require admin/spree_api
+//= require admin/spree_promo
+
+//= require admin/spree_product_groups
+
+/app/assets/stylesheets/admin/all.css
+
+ *= require admin/spree_core
+ *= require admin/spree_auth
+ *= require admin/spree_api
+ *= require admin/spree_promo
+ *= require admin/spree_product_groups
 
 
 Example
