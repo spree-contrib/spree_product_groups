@@ -9,7 +9,7 @@ Spree::Property.class_eval do
   #
   # Recalculates product group products after the property has been deleted
   def recalculate_product_group_products
-    ProductScope.where(:name => "with_property", :arguments => [self.name].to_yaml).each do |scope|
+    Spree::ProductScope.where(:name => "with_property", :arguments => [self.name].to_yaml).each do |scope|
       # Triggers ProductGroup#update_memberships callback to recalculate products
       scope.product_group.save!
     end

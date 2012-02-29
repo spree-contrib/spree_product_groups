@@ -4,6 +4,7 @@ gem 'spree', :path => '../spree'
 
 group :test do
   gem 'ffaker'
+  gem 'shoulda-matchers'
 end
 
 if RUBY_VERSION < "1.9"
