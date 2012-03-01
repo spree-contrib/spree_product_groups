@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'spree', :path => '../spree'
-
 group :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
