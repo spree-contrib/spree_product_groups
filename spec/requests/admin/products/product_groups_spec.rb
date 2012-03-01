@@ -19,7 +19,7 @@ describe "Product Groups" do
   end
 
   context "creating a new product group" do
-    it "should allow an admin to create a new product group", :js => true do
+    it "should allow an admin to create a new product group" do
       click_link "Product Groups"
       click_on "New Product Group"
       within('#content') { page.should have_content("Product Group") }
@@ -30,7 +30,7 @@ describe "Product Groups" do
   end
 
   context "updating an existing product group" do
-    it "should allow an admin to update an existing product group", :js => true do
+    it "should allow an admin to update an existing product group" do
       Factory(:product_group)
       click_link "Product Groups"
       within('table#listing_product_groups tbody tr:nth-child(1)') { click_link "Edit" }
@@ -64,7 +64,7 @@ describe "Product Groups" do
     end
   end
 
-  context "scoping", :js => true do
+  context "scoping" do
     before(:each) do
       Factory(:product_group)
       click_link "Product Groups"

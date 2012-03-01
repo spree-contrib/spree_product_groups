@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
+require 'spree/url_helpers'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -34,4 +35,27 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.include Spree::UrlHelpers
 end
+
+RSpec::Matchers.define :have_valid_factory do |factory_name|
+  match do |model|
+    Factory(factory_name).new_record?.should be_false
+  end
+end
+
+module AuthenticationHelpers
+  def sign_in_as!(user)
+    visit '/login'
+    fill_in 'Email', :with => user.email
+    fill_in 'Password', :with => 'secret'
+    click_button 'Login'
+  end
+
+end
+
+RSpec.configure do |c|
+  c.include AuthenticationHelpers, :type => :request
+end
+
