@@ -20,10 +20,10 @@ module Spree
         end
 
         def collection
-          params[:search] ||= {}
-          params[:search][:meta_sort] ||= "name.asc"
-          @search = super.metasearch(params[:search])
-          @collection = @search.relation.page(params[:page]).per(Spree::Config[:admin_pgroup_per_page])
+          params[:q] ||= {}
+          params[:q][:sort] ||= "name.asc"
+          @search = super.search(params[:q])
+          @collection = @search.result(:distinct => true).page(params[:page]).per(Spree::Config[:admin_pgroup_per_page])
         end
     
       private

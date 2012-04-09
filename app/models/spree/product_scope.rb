@@ -15,6 +15,8 @@ module Spree
 
     extend ::Spree::Scopes::Dynamic
 
+    attr_accessible :name, :arguments
+
     # Get all products with this scope
     def products
       if Product.respond_to?(name)

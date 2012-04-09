@@ -42,6 +42,8 @@ module Spree
 
     make_permalink
 
+    attr_accessible :name, :permalink, :product_scope, :order_scope
+
     # Testing utility: creates new *ProductGroup* from search permalink url.
     # Follows conventions for accessing PGs from URLs, as decoded in routes
     def self.from_url(url)
