@@ -14,7 +14,7 @@ module Spree
           @products_scope = @product_group.apply_on(base_scope)
           curr_page = manage_pagination && keywords ? 1 : page
 
-          @products = @products_scope.includes([:images, :master]).page(curr_page).per(per_page)
+          @products = @products_scope.includes(:master).page(curr_page).per(per_page)
         end
 
         def method_missing(name)
