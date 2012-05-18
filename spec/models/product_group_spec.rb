@@ -10,6 +10,25 @@ describe Spree::ProductGroup do
     it { should have_valid_factory(:product_group) }
   end
 
+  describe '#dynamic_products' do
+
+    context 'with a scope named with_ids' do
+      let!(:product_1) { Factory(:product) }
+      let!(:product_2) { Factory(:product) }
+      let!(:product_3) { Factory(:product) }
+      let!(:product_group) do
+        product_group = Factory(:product_group, :name => "With IDs")
+        product_group.product_scopes.create!(:name => "with_ids", :arguments => ["#{product_1.id},#{product_2.id}"])
+        product_group
+      end
+
+      it 'should return proper products' do
+        product_group.dynamic_products.to_a.should eql([product_1, product_2])
+      end
+    end
+
+  end
+
   describe '#from_route' do
     context "wth valid scopes" do
       before do
@@ -77,4 +96,5 @@ describe Spree::ProductGroup do
     end
 
   end
+
 end

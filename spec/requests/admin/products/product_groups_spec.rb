@@ -13,8 +13,8 @@ describe "Product Groups" do
       Factory(:product_group, :name => 'casual')
 
       click_link "Product Groups"
-      find('table#listing_product_groups tbody tr:nth-child(1) td:nth-child(1)').text.should == 'casual'
-      find('table#listing_product_groups tbody tr:nth-child(2) td:nth-child(1)').text.should == 'sports'
+      find('table#listing_product_groups tbody tr:nth-child(1) td:nth-child(1)').text.should == 'sports'
+      find('table#listing_product_groups tbody tr:nth-child(2) td:nth-child(1)').text.should == 'casual'
     end
   end
 

@@ -3,8 +3,9 @@ ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
+require 'ffaker'
 require 'rspec/rails'
-require 'spree/url_helpers'
+require 'shoulda-matchers'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -12,6 +13,7 @@ Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
 # Requires factories defined in spree_core
 require 'spree/core/testing_support/factories'
+require 'spree/core/url_helpers'
 
 Dir["#{File.dirname(__FILE__)}/factories/**"].each do |f|
   fp =  File.expand_path(f)
@@ -36,28 +38,6 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  config.include Spree::UrlHelpers
+  config.include AuthenticationHelpers, :type => :request
+  config.include Spree::Core::UrlHelpers
 end
-
-# valid factory tests
-RSpec::Matchers.define :have_valid_factory do |factory_name|
-  match do |model|
-    Factory(factory_name).new_record?.should be_false
-  end
-end
-
-# copied from spree/core for request specs
-module AuthenticationHelpers
-  def sign_in_as!(user)
-    visit '/login'
-    fill_in 'Email', :with => user.email
-    fill_in 'Password', :with => 'secret'
-    click_button 'Login'
-  end
-
-end
-
-RSpec.configure do |c|
-  c.include AuthenticationHelpers, :type => :request
-end
-

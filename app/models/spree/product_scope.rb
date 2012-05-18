@@ -20,7 +20,12 @@ module Spree
     # Get all products with this scope
     def products
       if Product.respond_to?(name)
-        Product.send(name, *arguments)
+        # Since IDs are comma seperated in the first argument we need to correctly pass the ID array to the with_ids scope.
+        if name == 'with_ids'
+          Product.with_ids(arguments.first.split(','))
+        else
+          Product.send(name, *arguments)
+        end
       end
     end
 
@@ -32,7 +37,12 @@ module Spree
                       if Product.method(self.name.intern).arity == 0
                         Product.send(self.name.intern)
                       else
-                        Product.send(self.name.intern, array.try(:first))
+                        # Since IDs are comma seperated in the first argument we need to correctly pass the ID array to the with_ids scope.
+                        if self.name == 'with_ids'
+                          Product.with_ids(array.first.split(','))
+                        else
+                          Product.send(self.name.intern, array.try(:first))
+                        end
                       end
                     else
                         Product.send(self.name.intern, *array)

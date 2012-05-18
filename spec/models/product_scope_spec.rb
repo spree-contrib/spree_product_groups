@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Spree::ProductScope do
 
   context "validations" do
-    #it { should have_valid_factory(:product_scope) }
+    it { should have_valid_factory(:product_scope) }
   end
 
   # FIXME use factory in the following test
@@ -35,6 +35,19 @@ describe Spree::ProductScope do
         subject.products.should be_nil
       end
     end
+
+    context 'when scope name is with_ids' do
+      let!(:product_1) { Factory(:product) }
+      let!(:product_2) { Factory(:product) }
+      let!(:product_3) { Factory(:product) }
+
+      it 'should properly pass ids to scope' do
+        subject.name = 'with_ids'
+        subject.arguments = ["#{product_1.id},#{product_2.id}"]
+        subject.products.to_a.should eql([product_1, product_2])
+      end
+    end
+
   end
 
 end

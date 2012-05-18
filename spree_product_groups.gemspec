@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name        = 'spree_product_groups'
   s.version     = '1.0.0'
   s.summary     = 'Product Group Extension for Spree'
-  s.description = 'Spree extension for product group functionality that was removed from Spree 1.0.1'
+  s.description = 'Spree extension for product group functionality that was removed from Spree 1.1.0'
   s.required_ruby_version = '>= 1.8.7'
 
   s.authors           = ['Chris Mar']
@@ -16,10 +16,11 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree', '~> 1.1.0.beta'
+  s.add_dependency 'spree', '>= 1.1.0', '<= 1.3.0'
   s.add_development_dependency 'capybara', '1.0.1'
-  s.add_development_dependency 'factory_girl'
+  s.add_development_dependency 'factory_girl', '~> 2.6'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'rspec-rails', '~> 2.7'
+  s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'sqlite3'
 end
