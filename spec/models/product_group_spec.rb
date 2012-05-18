@@ -6,6 +6,7 @@ describe Spree::ProductGroup do
 
   context "validations" do
     it { should validate_presence_of(:name) }
+    it { should have_many(:product_scopes).dependent(:destroy) }
     it { should have_valid_factory(:product_group) }
   end
 
