@@ -35,7 +35,7 @@ module Spree
 
     has_and_belongs_to_many :cached_products, :class_name => 'Spree::Product',
                                               :join_table => 'spree_product_groups_products'
-    has_many :product_scopes
+    has_many :product_scopes, :dependent => :destroy
     accepts_nested_attributes_for :product_scopes
 
     has_many :promotion_rules
