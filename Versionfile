@@ -7,5 +7,6 @@
 # "0.60.x" => { :branch => "0-60-stable" }
 # "0.40.x" => { :tag => "v1.0.0", :version => "1.0.0" }
 
-"1.2.x" => { :branch => "master" }
-"1.1.x" => { :branch => "master" }
+"1.3.x" => { :branch => "master" }
+"1.2.x" => { :sha => "fc15293b5ba2f6f1ee5810226940dc0b965d461a" }
+"1.1.x" => { :sha => "fc15293b5ba2f6f1ee5810226940dc0b965d461a" }

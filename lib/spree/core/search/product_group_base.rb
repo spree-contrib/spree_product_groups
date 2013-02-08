@@ -2,7 +2,7 @@ module Spree
   module Core
     module Search
       class ProductGroupBase
-        attr_accessor :properties, :current_user
+        attr_accessor :properties, :current_user, :current_currency
 
         def initialize(params)
           @properties = {}
