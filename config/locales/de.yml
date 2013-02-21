@@ -1,0 +1,23 @@
+---
+de:
+  spree/product_group:
+    name: Name
+    product_count: "Produktanzahl"
+    product_scopes: "Produktauswahl"
+    products: "Produkte"
+    url: URL
+  spree/product_scope:
+    arguments: "Argumente"
+    description: "Beschreibung"
+  spree/product_group:
+    one: "Produktgruppe"
+    other: "Produktgruppen"
+  create_product_group_from_products: Neue Produktgruppe mit diesen Produkten anlegen
+  product_scopes:
+    scopes:
+      ascend_by_master_price:
+        name: Aufsteigend nach Produktmasterpreis
+      descend_by_master_price:
+        name: Absteigend nach Produktmasterpreis
+      descend_by_popularity:
+        name: Sortiere nach Popularität(populärste zuerst)
