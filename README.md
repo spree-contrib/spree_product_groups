@@ -8,42 +8,18 @@ You can read more about product groups http://guides.spreecommerce.com/scopes_an
 Installation
 ============
 
-In your application Gemfile, add this gem after the Spree gem
+In your application Gemfile, add this gem after the Spree gem:
 
 ```ruby
 gem 'spree'
 gem 'spree_product_groups', :git => 'git@github.com:spree/spree_product_groups.git'
 ```
-run bundle install
-
-Copy the migrations
+Then run:
 
 ```
-rake spree_product_groups:install:migrations
-rake db:migrate
+$ bundle
+$ rails g spree_product_groups:install
 ```
-
-Update your javascript and stylesheet assets to include this gem's assets
-
-```
-// inside /app/assets/javascripts/admin/all.js
-
-//= require admin/spree_core
-//= require admin/spree_auth
-//= require admin/spree_api
-//= require admin/spree_promo
-//= require admin/spree_product_groups
-
-// inside /app/assets/stylesheets/admin/all.css
-
- *= require admin/spree_core
- *= require admin/spree_auth
- *= require admin/spree_api
- *= require admin/spree_promo
- *= require admin/spree_product_groups
-
- rake assets:precompile
- ```
 
 Testing
 -------
