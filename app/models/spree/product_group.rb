@@ -169,7 +169,7 @@ module Spree
       ActiveRecord::Base.connection.execute "INSERT INTO spree_product_groups_products #{dynamic_products(false).scoped(:select => "spree_products.id, #{self.id}").to_sql}"
     end
 
-    def generate_preview(size = Spree::Config[:admin_pgroup_preview_size])
+    def generate_preview(size = Spree::Config[:admin_pgroup_per_page])
       count = self.class.count_by_sql ["SELECT COUNT(*) FROM spree_product_groups_products WHERE spree_product_groups_products.product_group_id = ?", self]
 
       return count, products.limit(size)

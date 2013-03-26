@@ -1,4 +1,4 @@
-<% count, preview = @product_group.generate_preview(Spree::Config[:admin_pgroup_preview_size]) %>
+<% count, preview = @product_group.generate_preview(Spree::Config[:admin_pgroup_per_page]) %>
 
 <h2><%= Spree::ProductGroup.human_attribute_name(:products) %> (<%= count %>)</h2>
 
@@ -6,8 +6,8 @@
   <p data-hook="preview_empty"><%= t(:no_match_found) %></p>
 <% else %>
 
-  <% if count > Spree::Config[:admin_pgroup_preview_size] %>
-    <p data-hook="preview_showing"><%= t(:showing_first_n, :n => Spree::Config[:admin_pgroup_preview_size]) %></p>
+  <% if count > Spree::Config[:admin_pgroup_per_page] %>
+    <p data-hook="preview_showing"><%= t(:showing_first_n, :n => Spree::Config[:admin_pgroup_per_page]) %></p>
   <% end %>
 
   <table class="index" data-hook="preview">
