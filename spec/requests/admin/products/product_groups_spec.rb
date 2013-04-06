@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe "Product Groups" do
   before(:each) do
-    sign_in_as!(Factory(:admin_user))
+    sign_in_as!(create(:admin_user))
     visit spree.admin_path
     click_link "Products"
   end
 
   context "listing product groups" do
     it "should display existing product groups" do
-      Factory(:product_group)
-      Factory(:product_group, :name => 'casual')
+      create(:product_group)
+      create(:product_group, :name => 'casual')
 
       click_link "Product Groups"
       find('table#listing_product_groups tbody tr:nth-child(1) td:nth-child(1)').text.should == 'sports'
@@ -31,7 +31,7 @@ describe "Product Groups" do
 
   context "updating an existing product group" do
     it "should allow an admin to update an existing product group" do
-      Factory(:product_group)
+      create(:product_group)
       click_link "Product Groups"
       within('table#listing_product_groups tbody tr:nth-child(1)') { click_link "Edit" }
       fill_in "product_group_name", :with => "most popular rails items 99"
@@ -42,7 +42,7 @@ describe "Product Groups" do
     end
 
     it "should handle permalink changes" do
-      Factory(:product_group)
+      create(:product_group)
       click_link "Product Groups"
       within('table#listing_product_groups tbody tr:nth-child(1)') { click_link "Edit" }
 
@@ -66,7 +66,7 @@ describe "Product Groups" do
 
   context "scoping" do
     before(:each) do
-      Factory(:product_group)
+      create(:product_group)
       click_link "Product Groups"
     end
 

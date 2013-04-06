@@ -13,8 +13,6 @@ module Spree
 
     validate :check_validity_of_scope
 
-    extend ::Spree::Scopes::Dynamic
-
     attr_accessible :name, :arguments
 
     # Get all products with this scope

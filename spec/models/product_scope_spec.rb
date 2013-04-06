@@ -9,7 +9,7 @@ describe Spree::ProductScope do
   # FIXME use factory in the following test
   context "#check_validity_of_scope" do
     before do
-      @pg = Factory(:product_group)
+      @pg = create(:product_group)
       #@ps = Spree::ProductScope.create(:name => 'in_name', :arguments => ['Rails'], :product_group_id => @pg.id)
     end
     it 'should be valid' do
@@ -37,9 +37,9 @@ describe Spree::ProductScope do
     end
 
     context 'when scope name is with_ids' do
-      let!(:product_1) { Factory(:product) }
-      let!(:product_2) { Factory(:product) }
-      let!(:product_3) { Factory(:product) }
+      let!(:product_1) { create(:product) }
+      let!(:product_2) { create(:product) }
+      let!(:product_3) { create(:product) }
 
       it 'should properly pass ids to scope' do
         subject.name = 'with_ids'

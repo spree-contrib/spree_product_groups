@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Homepage" do
    context "visiting the products tab" do
     before(:each) do
-      sign_in_as!(Factory(:admin_user))
+      sign_in_as!(create(:admin_user))
       visit spree.admin_products_path
     end
 

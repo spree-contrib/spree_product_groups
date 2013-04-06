@@ -14,11 +14,12 @@ In your application Gemfile, add this gem after the Spree gem:
 gem 'spree'
 gem 'spree_product_groups', :git => 'git@github.com:spree/spree_product_groups.git'
 ```
+
 Then run:
 
-```
-$ bundle
-$ rails g spree_product_groups:install
+```shell
+bundle
+rails g spree_product_groups:install
 ```
 
 Testing
@@ -26,8 +27,10 @@ Testing
 
 Be sure to bundle your dependencies and then create a dummy test app for the specs to run against.
 
-    $ bundle
-    $ bundle exec rake test_app
-    $ bundle exec rspec spec
+```shell
+bundle
+bundle exec rake test_app
+bundle exec rspec spec
+```
 
-Copyright (c) 2012 Spree Commerce, released under the New BSD License
+Copyright (c) 2012-2013 Spree Commerce, released under the New BSD License

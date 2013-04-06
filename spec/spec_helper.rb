@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
+require 'factory_girl'
 require 'ffaker'
 require 'rspec/rails'
 require 'shoulda-matchers'
@@ -12,8 +13,8 @@ require 'shoulda-matchers'
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
 # Requires factories defined in spree_core
-require 'spree/core/testing_support/factories'
-require 'spree/core/url_helpers'
+require 'spree/testing_support/factories'
+require 'spree/testing_support/url_helpers'
 
 Dir["#{File.dirname(__FILE__)}/factories/**"].each do |f|
   fp =  File.expand_path(f)
@@ -39,5 +40,6 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.include AuthenticationHelpers, :type => :request
-  config.include Spree::Core::UrlHelpers
+  config.include FactoryGirl::Syntax::Methods
+  config.include Spree::TestingSupport::UrlHelpers
 end

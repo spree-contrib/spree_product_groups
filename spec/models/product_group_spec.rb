@@ -13,11 +13,11 @@ describe Spree::ProductGroup do
   describe '#dynamic_products' do
 
     context 'with a scope named with_ids' do
-      let!(:product_1) { Factory(:product) }
-      let!(:product_2) { Factory(:product) }
-      let!(:product_3) { Factory(:product) }
+      let!(:product_1) { create(:product) }
+      let!(:product_2) { create(:product) }
+      let!(:product_3) { create(:product) }
       let!(:product_group) do
-        product_group = Factory(:product_group, :name => "With IDs")
+        product_group = create(:product_group, :name => "With IDs")
         product_group.product_scopes.create!(:name => "with_ids", :arguments => ["#{product_1.id},#{product_2.id}"])
         product_group
       end
@@ -58,15 +58,15 @@ describe Spree::ProductGroup do
 
   # Regression test for #774
   context "Regression test for #774" do
-    let!(:property) { Factory(:property, :name => "test") }
+    let!(:property) { create(:property, :name => "test") }
     let!(:product) do
-      product = Factory(:product)
+      product = create(:product)
       product.properties << property
       product
     end
 
     let!(:product_group) do
-     product_group = Factory(:product_group, :name => "Not sports")
+     product_group = create(:product_group, :name => "Not sports")
      product_group.product_scopes.create!(:name => "with_property", :arguments => ["test"])
      product_group
     end
