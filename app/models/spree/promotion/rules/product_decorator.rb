@@ -1,5 +1,5 @@
 module Spree
-  class Promotion
+  class Promotion < Spree::Activator
     module Rules
       Product.class_eval do
         belongs_to :product_group
