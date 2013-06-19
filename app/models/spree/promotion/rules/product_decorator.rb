@@ -1,4 +1,4 @@
-unless defined?(Spree::Promotion)
+if defined?(Spree::Promotion)
   module Spree
     class Promotion < Spree::Activator
       module Rules
