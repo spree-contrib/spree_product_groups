@@ -46,6 +46,13 @@ describe Spree::ProductScope do
         subject.arguments = ["#{product_1.id},#{product_2.id}"]
         subject.products.to_a.should eql([product_1, product_2])
       end
+
+      it 'apply_on should properly handle product id scopes' do
+        subject.name = 'with_ids'
+        subject.arguments = ["#{product_1.id},#{product_2.id}"]
+        scope = Spree::Product.where(id: product_1.id)
+        subject.apply_on(scope).to_a.should eql([product_1])
+      end
     end
 
   end
