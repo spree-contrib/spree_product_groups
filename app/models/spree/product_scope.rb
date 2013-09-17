@@ -30,28 +30,27 @@ module Spree
     # Applies product scope on Spree::Product model or another named scope
     def apply_on(another_scope)
       array = Array.wrap(self.arguments)
-      if Product.respond_to?(self.name.intern)
-        relation2 = if (array.blank? || array.size < 2)
-                      if Product.method(self.name.intern).arity == 0
-                        Product.send(self.name.intern)
-                      else
-                        # Since IDs are comma seperated in the first argument we need to correctly pass the ID array to the with_ids scope.
-                        if self.name == 'with_ids'
-                          Product.with_ids(array.first.split(','))
-                        else
-                          Product.send(self.name.intern, array.try(:first))
-                        end
-                      end
-                    else
-                        Product.send(self.name.intern, *array)
-                    end
-      else
-        relation2 = Product.ransack({ self.name.intern => array.join("") }).result
-      end
       unless another_scope.class == ActiveRecord::Relation
         another_scope = another_scope.send(:relation)
       end
-      another_scope.merge(relation2)
+      if Product.respond_to?(self.name.intern)
+        if (array.blank? || array.size < 2)
+          if Product.method(self.name.intern).arity == 0
+            another_scope.send(self.name.intern)
+          else
+            # Since IDs are comma seperated in the first argument we need to correctly pass the ID array to the with_ids scope.
+            if self.name == 'with_ids'
+              another_scope.with_ids(array.first.split(','))
+            else
+              another_scope.send(self.name.intern, array.try(:first))
+            end
+          end
+        else
+          another_scope.send(self.name.intern, *array)
+        end
+      else
+        another_scope.ransack({ self.name.intern => array.join("") }).result
+      end
     end
 
     # checks validity of the named scope (if its safe and can be applied on Spree::Product)
