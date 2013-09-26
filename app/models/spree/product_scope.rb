@@ -13,8 +13,6 @@ module Spree
 
     validate :check_validity_of_scope
 
-    attr_accessible :name, :arguments
-
     # Get all products with this scope
     def products
       if Product.respond_to?(name)
