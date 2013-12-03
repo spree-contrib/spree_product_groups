@@ -1,37 +1,52 @@
 <% render :partial => 'spree/admin/shared/product_sub_menu' %>
-<div class="toolbar" data-hook="toolbar">
-  <ul class="actions">
-    <li>
-      <%= button_link_to t(:new_product_group), new_object_url, :icon => 'add', :id => 'new_product_group_link' %>
-    </li>
-  </ul>
-  <br class="clear" />
-</div>
 
-<h1><%= t(:listing_product_groups) %></h1>
+<% content_for :page_title do %>
+  <%= Spree.t(:product_groups) %>
+<% end %>
 
-<table class="index" id='listing_product_groups' data-hook>
-  <thead>
-    <tr data-hook="product_group_header">
-      <th><%= Spree::ProductGroup.human_attribute_name(:name) %></th>
-      <th><%= Spree::ProductGroup.human_attribute_name(:url) %></th>
-      <th><%= Spree::ProductGroup.human_attribute_name(:product_scopes) %></th>
-      <th><%= Spree::ProductGroup.human_attribute_name(:product_count) %></th>
-      <th><%= t(:action) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @product_groups.each do |pg| %>
-      <tr id="<%= dom_id pg %>" data-hook="product_group_row">
-        <td><%= link_to pg.name, [:admin, pg] %></td>
-        <td><%= link_to pg_search_path(:product_group_name => pg.permalink), pg_search_path(:product_group_name => pg.permalink) %></td>
-        <td><%== pg.product_scopes.map(&:to_sentence).join('<br />') %></td>
-        <td><%= pg.products.count %></td>
-        <td>
-          <%= link_to_edit pg, :class => 'admin_edit_product_group' %> &nbsp; <%= link_to_delete pg %>
-        </td>
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to t(:new_product_group), new_object_url, :icon => 'icon-plus', :id => 'admin_new_product_group_link' %>
+  </li>
+<% end %>
+
+<% if @product_groups.any? %>
+  <table class="index" id='listing_product_groups' data-hook>
+    <colgroup>
+      <col style="width: 25%">
+      <col style="width: 25%">
+      <col style="width: 25%">
+      <col style="width: 15%">
+      <col style="width: 20%">
+    </colgroup>
+    <thead>
+      <tr data-hook="product_group_header">
+        <th><%= Spree::ProductGroup.human_attribute_name(:name) %></th>
+        <th><%= Spree::ProductGroup.human_attribute_name(:url) %></th>
+        <th><%= Spree::ProductGroup.human_attribute_name(:product_scopes) %></th>
+        <th><%= Spree::ProductGroup.human_attribute_name(:product_count) %></th>
+        <th><%= t(:action) %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @product_groups %>
+    </thead>
+    <tbody>
+      <% @product_groups.each do |pg| %>
+        <tr id="<%= dom_id pg %>" data-hook="product_group_row" class="<%= cycle('odd', 'even')%>">
+          <td class="align-center"><%= link_to pg.name, [:admin, pg] %></td>
+          <td class="align-center"><%= link_to pg_search_path(:product_group_name => pg.permalink), pg_search_path(:product_group_name => pg.permalink) %></td>
+          <td class="align-center"><%== pg.product_scopes.map(&:to_sentence).join('<br />') %></td>
+          <td class="align-center"><%= pg.products.count %></td>
+          <td data-hook="admin_recurrings_index_row_actions" class="actions">
+            <%= link_to_edit pg, :no_text => true %>
+            <%= link_to_delete pg, :no_text => true  %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @product_groups %>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.spree/product_group')) %>,
+    <%= link_to Spree.t(:add_one), new_object_url %>!
+  </div>
+<% end %>

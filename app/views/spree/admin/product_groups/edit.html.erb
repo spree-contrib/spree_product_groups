@@ -1,6 +1,14 @@
 <%= render :partial => 'spree/admin/shared/product_sub_menu' %>
 
-<h1><%= t(:editing_product_group) %></h1>
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_product_group) %> <i class="icon-arrow-right"></i> <%= @product_group.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:back_to_product_groups_list), admin_product_groups_url, :icon => 'icon-arrow-left' %>
+  </li>  
+<% end %>
 
 <fieldset id="product_group_forms_container" data-hook>
 
@@ -48,7 +56,7 @@
     <p>
       <%= label_tag :product_scope_name, t(:add_scope) %>
       <%= select_tag 'product_scope[name]', options %>
-      <%= submit_tag t(:add) %>
+      <%= submit_tag Spree.t(:add) %>
     </p>
   <% end %>
 

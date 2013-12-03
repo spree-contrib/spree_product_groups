@@ -1,4 +1,15 @@
 <%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<% content_for :page_title do %>
+  <%= Spree.t(:new_product_group) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:back_to_product_groups_list), admin_product_groups_url, :icon => 'icon-arrow-left' %>
+  </li>  
+<% end %>
+
 <%= form_for [:admin, @product_group], :html => { :id => 'product-group-form', :multipart => true } do |f| %>
   <fieldset data-hook="name">
     <legend><%= t(:product_group) %></legend>
