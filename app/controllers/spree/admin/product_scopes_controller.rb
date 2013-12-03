@@ -7,7 +7,7 @@ module Spree
 
       def create
         @product_group = ProductGroup.find_by_permalink(params[:product_group_id])
-        @product_scope = @product_group.product_scopes.build(params[:product_scope])
+        @product_scope = @product_group.product_scopes.build(product_scope_params)
         if @product_scope.save
           respond_with(@product_scope) do |format|
             format.html { redirect_to edit_admin_product_group_path(@product_group) }
@@ -32,6 +32,12 @@ module Spree
             format.html { redirect_to edit_admin_product_group_path(@product_scope.product_group) }
           end
         end
+      end
+
+      private
+
+      def product_scope_params
+        params.require(:product_scope).permit!
       end
 
     end

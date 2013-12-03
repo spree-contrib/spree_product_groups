@@ -1,5 +1,15 @@
----
 en:
+  activerecord:
+    models:
+      spree/product_group:
+        one: Product Group
+        other: Product Groups
+  spree:
+    editing_product_group: Editing Product Group
+    showing_first_n: "Showing %{n}"
+    product_groups: Product Groups
+    new_product_group: New Product Group
+    back_to_product_groups_list: Back to Product Groups list
   spree/product_group:
     name: Name
     product_count: "Product count"
