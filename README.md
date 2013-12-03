@@ -3,8 +3,6 @@ SpreeProductGroups
 
 Spree extension for Product Group and Scope. This functionality was removed from Spree 1.1 and into this extension.
 
-You can read more about product groups http://guides.spreecommerce.com/scopes_and_groups.html
-
 Installation
 ============
 
