@@ -1,0 +1,146 @@
+---
+ru:
+  activerecord:
+    models:
+      spree/product_group:
+        one: "Группа товаров"
+        other: "Группы товаров"
+    attributes:
+      spree/product_group:
+        name: Название
+        product_count: "Количество товаров"
+        product_scopes: "Фильтры товаров"
+        products: "Товары"
+        url: URL
+        permalink: "Ссылка"
+        sort_ordering: "Сортировка"
+      spree/product_scope:
+        arguments: "Аргументы"
+        description: "Описание"
+  spree:
+    add_scope: "Добавить Фильтр"
+    no_match_found: "Записей не найдено"
+    listing_product_groups: "Группы товаров"
+    editing_product_group: "Редактирование Группы товаров"
+    showing_first_n: "Первые %{n}"
+    new_product_group: "Новая группа товаров"
+    admin:
+      tab:
+        product_groups: "Группы товаров"
+  create_product_group_from_products: Создайте новую группу товаров на основе этих товаров
+  product_scopes:
+    groups:
+      price:
+        description: "Фильтры для выбора товаров, основанные на цене"
+        name: Цена
+      search:
+        description: "Фильтры для выбора товаров, основанные на названии, ключевых словах и описании товара"
+        name: "Текстовый поиск"
+      taxon:
+        description: "Фильтры для выбора товаров, основанные на Таксонах"
+        name: Таксон
+      values:
+        description: "Фильтры для выбора товаров, основанные на значениях опции или свойства"
+        name: Значения
+    scopes:
+      ascend_by_master_price:
+        name: Цена, по возрастанию
+      descend_by_master_price:
+        name: Цена, по убыванию
+      descend_by_popularity:
+        name: По популярности (сначала наиболее популярные)
+      ascend_by_name:
+        name: "Название товара, по возрастанию"
+      ascend_by_updated_at:
+        name: "Дата обновления товара, по возрастанию"
+      descend_by_name:
+        name: "Название товара, по убыванию"
+      descend_by_updated_at:
+        name: "Дата обновления товара, по убыванию"
+      in_name:
+        args:
+          words: Слова
+        description: "(разделенные пробелом или запятой)"
+        name: "Название товара имеет следующие"
+        sentence: "название товара содержит <em>%s</em>"
+      in_name_or_description:
+        args:
+          words: Слова
+        description: "(разделенные пробелом или запятой)"
+        name: "Название товара или описание имеют следующие"
+        sentence: "название или описание содержат <em>%s</em>"
+      in_name_or_keywords:
+        args:
+          words: Слова
+        description: "(разделенные пробелом или запятой)"
+        name: "Название товара или ключевые слова имеют следующие"
+        sentence: "название или ключевые слова содержат <em>%s</em>"
+      in_taxons:
+        args:
+          taxon_names: "Названия таксонов"
+        description: "Названия таксонов должны быть разделены запятой или пробелом (напр. adidas,shoes)"
+        name: "В таксонах и всех их потомках"
+        sentence: "в <em>%s</em> и всех их потомках"
+      master_price_gte:
+        args:
+          amount: Количество
+        description: ""
+        name: "Цена больше или равна"
+        sentence: "цена больше или равна <em>%.2f</em>"
+      master_price_lte:
+        args:
+          amount: Количество
+        description: ""
+        name: "Цена меньше или равна"
+        sentence: "цена меньше или равна <em>%.2f</em>"
+      price_between:
+        args:
+          high: Верхняя
+          low: Нижняя
+        description: ""
+        name: "Цена между"
+        sentence: "цена между <em>%.2f</em> и <em>%.2f</em>"
+      taxons_name_eq:
+        args:
+          taxon_name: "Название таксона"
+        description: "В конкретном таксоне - без потомков"
+        name: "В таксоне (без потомков)"
+        sentence: "в <em>%s</em>"
+      with:
+        args:
+          value: Значение
+        description: "Выбирает все товары, имеющие хотя бы 1 вариант с определенным значением, выступающим как опция или свойство (напр. 'красный')"
+        name: "Со значением"
+        sentence: "со значением <em>%s</em>"
+      with_ids:
+        args:
+          ids: Идентификаторы
+        description: "Выбирает определенные товары"
+        name: "Товары с идентификаторами"
+        sentence: "с идентификаторами <em>%s</em>"
+      with_option:
+        args:
+          option: Опция
+        description: "Выбирает все товары с определенной опцией (напр. цвет)"
+        name: "С опцией"
+        sentence: "с опцией <em>%s</em>"
+      with_option_value:
+        args:
+          option: Опция
+          value: Значение
+        description: "Выбирает все товары, имеющие хотя бы 1 вариант с определенной опцией и значением (напр. цвет:красный)"
+        name: "С опцией и значением"
+        sentence: "с опцией <em>%s</em> и значением <em>%s</em>"
+      with_property:
+        args:
+          property: Свойство
+        description: "Выбирает все товары, имеющие определенное свойство (напр. вес)"
+        name: "Со свойством"
+        sentence: "со свойством <em>%s</em>"
+      with_property_value:
+        args:
+          property: Свойство
+          value: Значение
+        description: "Выбирает все товары, которые имеют хотя бы 1 вариант с определенным свойством и значением (напр. вес:10кг)"
+        name: "Со значением свойства"
+        sentence: "со свойством <em>%s</em> и значением <em>%s</em>"
