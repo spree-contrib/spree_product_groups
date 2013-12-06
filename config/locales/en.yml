@@ -1,27 +1,32 @@
+---
 en:
   activerecord:
     models:
       spree/product_group:
-        one: Product Group
-        other: Product Groups
+        one: "Product group"
+        other: "Product groups"
+    attributes:
+      spree/product_group:
+        name: Name
+        product_count: "Product count"
+        product_scopes: "Product scopes"
+        products: "Products"
+        url: URL
+        permalink: "Permalink"
+        sort_ordering: "Sort ordering"
+      spree/product_scope:
+        arguments: "Arguments"
+        description: "Description"
   spree:
-    editing_product_group: Editing Product Group
-    showing_first_n: "Showing %{n}"
-    product_groups: Product Groups
-    new_product_group: New Product Group
-    back_to_product_groups_list: Back to Product Groups list
-  spree/product_group:
-    name: Name
-    product_count: "Product count"
-    product_scopes: "Product scopes"
-    products: "Products"
-    url: URL
-  spree/product_scope:
-    arguments: "Arguments"
-    description: "Description"
-  spree/product_group:
-    one: "Product group"
-    other: "Product groups"
+    add_scope: "Add Scope"
+    no_match_found: "No match found"
+    listing_product_groups: "Listing Product Groups"
+    editing_product_group: "Editing Product Group"
+    showing_first_n: "Showing first %{n}"
+    new_product_group: "New Product Group"
+    admin:
+      tab:
+        product_groups: "Product Groups"
   create_product_group_from_products: Create a new product group from these products
   product_scopes:
     groups:

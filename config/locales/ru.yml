@@ -1,17 +1,32 @@
 ---
 ru:
-  spree/product_group:
-    name: Название
-    product_count: "Количество товаров"
-    product_scopes: "Фильтры товаров"
-    products: "Товары"
-    url: URL
-  spree/product_scope:
-    arguments: "Аргументы"
-    description: "Описание"
-  spree/product_group:
-    one: "Группа товаров"
-    other: "Группы товаров"
+  activerecord:
+    models:
+      spree/product_group:
+        one: "Группа товаров"
+        other: "Группы товаров"
+    attributes:
+      spree/product_group:
+        name: Название
+        product_count: "Количество товаров"
+        product_scopes: "Фильтры товаров"
+        products: "Товары"
+        url: URL
+        permalink: "Ссылка"
+        sort_ordering: "Сортировка"
+      spree/product_scope:
+        arguments: "Аргументы"
+        description: "Описание"
+  spree:
+    add_scope: "Добавить Фильтр"
+    no_match_found: "Записей не найдено"
+    listing_product_groups: "Группы товаров"
+    editing_product_group: "Редактирование Группы товаров"
+    showing_first_n: "Первые %{n}"
+    new_product_group: "Новая группа товаров"
+    admin:
+      tab:
+        product_groups: "Группы товаров"
   create_product_group_from_products: Создайте новую группу товаров на основе этих товаров
   product_scopes:
     groups:
