@@ -28,12 +28,12 @@ module Spree
     # Applies product scope on Spree::Product model or another named scope
     def apply_on(another_scope)
       array = Array.wrap(self.arguments)
-      unless another_scope.class == ActiveRecord::Relation
+      unless another_scope.is_a?(ActiveRecord::Relation)
         another_scope = another_scope.send(:relation)
       end
       if Product.respond_to?(self.name.intern)
         if (array.blank? || array.size < 2)
-          if Product.method(self.name.intern).arity == 0
+          if Product.method(self.name.intern).arity == 0 || self.is_ordering?
             another_scope.send(self.name.intern)
           else
             # Since IDs are comma seperated in the first argument we need to correctly pass the ID array to the with_ids scope.
