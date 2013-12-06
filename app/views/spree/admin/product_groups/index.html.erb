@@ -6,7 +6,7 @@
 
 <% content_for :page_actions do %>
   <li>
-    <%= button_link_to t(:new_product_group), new_object_url, :icon => 'icon-plus', :id => 'admin_new_product_group_link' %>
+    <%= button_link_to Spree.t(:new_product_group), new_object_url, :icon => 'icon-plus', :id => 'admin_new_product_group_link' %>
   </li>
 <% end %>
 
@@ -25,7 +25,7 @@
         <th><%= Spree::ProductGroup.human_attribute_name(:url) %></th>
         <th><%= Spree::ProductGroup.human_attribute_name(:product_scopes) %></th>
         <th><%= Spree::ProductGroup.human_attribute_name(:product_count) %></th>
-        <th><%= t(:action) %></th>
+        <th><%= Spree.t(:action) %></th>
       </tr>
     </thead>
     <tbody>

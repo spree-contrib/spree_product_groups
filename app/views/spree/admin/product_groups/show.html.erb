@@ -19,7 +19,7 @@
     <% @product_group.product_scopes.each do |product_scope| %>
       <tr <%= !product_scope.valid? ? "class='invalid'":'' %> data-hook="product_scopes_row">
         <td>
-          <%= product_scope.to_sentence %>
+          <%= product_scope.to_sentence.html_safe %>
         </td>
         <td>
           <%= product_scope.arguments.join(', ') %>

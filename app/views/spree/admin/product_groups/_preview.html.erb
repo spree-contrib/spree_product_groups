@@ -3,7 +3,7 @@
 <h2><%= Spree::ProductGroup.human_attribute_name(:products) %> (<%= count %>)</h2>
 
 <% if count == 0 %>
-  <p data-hook="preview_empty"><%= t(:no_match_found) %></p>
+  <p data-hook="preview_empty"><%= Spree.t(:no_match_found) %></p>
 <% else %>
 
   <% if count > Spree::Config[:admin_pgroup_per_page] %>
@@ -14,7 +14,7 @@
     <thead>
       <tr data-hook="preview_header">
         <th><%= Spree::Product.human_attribute_name(:name) %></th>
-        <th><%= t(:action) %></th>
+        <th><%= Spree.t(:action) %></th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
           <%= link_to product.name, product_url(product) %>
         </td>
         <td>
-          <%= link_to t(:edit), edit_admin_product_path(product) %>
+          <%= link_to Spree.t(:edit), edit_admin_product_path(product) %>
         </td>
       </tr>
     <% end %>

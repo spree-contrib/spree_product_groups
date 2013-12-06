@@ -7,17 +7,17 @@
 <% content_for :page_actions do %>
   <li>
     <%= button_link_to Spree.t(:back_to_product_groups_list), admin_product_groups_url, :icon => 'icon-arrow-left' %>
-  </li>  
+  </li>
 <% end %>
 
 <%= form_for [:admin, @product_group], :html => { :id => 'product-group-form', :multipart => true } do |f| %>
   <fieldset data-hook="name">
-    <legend><%= t(:product_group) %></legend>
+    <legend><%= Spree::ProductGroup.model_name.human %></legend>
     <%= f.field_container :name do %>
-      <%= f.label :name, t(:name) %>
+      <%= f.label :name, Spree::ProductGroup.human_attribute_name(:name) %>
       <%= f.text_field :name %>
       <%= f.error_message_on :name %>
     <% end %>
   </fieldset>
-  <%=  button t(:create) %>
+  <%=  button Spree.t(:create) %>
 <% end %>
